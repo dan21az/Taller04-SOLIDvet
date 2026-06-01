@@ -47,9 +47,9 @@ public class Main {
     }
 
     private static void demostrarViolacionesSinRomperEjecucion(Veterinario veterinario, Mascota mascota, Tratamiento tratamiento) {
-        Cita citaDesdeModelo = veterinario.reservarCita(2, mascota, LocalDate.now().plusDays(1));
-        veterinario.diagnosticar(citaDesdeModelo, "Ejemplo de SRP violado desde el modelo.");
-        System.out.println(veterinario.crearReporte(citaDesdeModelo));
+        Cita citaDesdeModelo = reporteService.reservarCita(2, mascota, LocalDate.now().plusDays(1));
+        diagnosticoService.diagnosticar(citaDesdeModelo, "Ejemplo de SRP violado desde el modelo.");
+        System.out.println(reporteService.crearReporte(citaDesdeModelo));
 
         Animal pez = new Pez(3, "Nemo");
         pez.nadar();

@@ -18,4 +18,7 @@ public class FacturacionService {
         baseDatos.getFacturas().add(factura);
         return factura;
     }
+    public Factura generarFactura(int facturaId, Cita cita, double monto, LocalDate fecha) {
+        return new Factura(facturaId, cita, monto, fecha, false);
+    }
 }
