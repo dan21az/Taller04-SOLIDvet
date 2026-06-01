@@ -1,14 +1,15 @@
 package clinicaveterinaria.service;
 
-import java.time.LocalDate;
-
+import clinicaveterinaria.interfaces.IVeterinarioService;
 import clinicaveterinaria.model.Cita;
 import clinicaveterinaria.model.EstadoCita;
 import clinicaveterinaria.model.Mascota;
 import clinicaveterinaria.model.Veterinario;
 import clinicaveterinaria.repository.BaseDatos;
 
-public class ReservaService {
+import java.time.LocalDate;
+
+public class ReservaService implements IVeterinarioService{
     private final BaseDatos baseDatos;
     private Veterinario veterinario;
 
@@ -22,8 +23,16 @@ public class ReservaService {
         veterinario.setDisponible(false);
         return cita;
     }
-    public Cita reservarCita(int citaId, Mascota mascota, LocalDate fecha) {
-         veterinario.setDisponible(false);
-        return new Cita(citaId, mascota, veterinario, fecha, "Pendiente", EstadoCita.PROGRAMADA);
+
+    @Override
+    public Cita reservarCita(Mascota mascota, Veterinario veterinario, LocalDate fecha) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'reservarCita'");
+    }
+
+    @Override
+    public void diagnosticar(Cita cita, String diagnostico) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'diagnosticar'");
     }
 }

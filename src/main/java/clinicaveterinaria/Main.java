@@ -1,5 +1,6 @@
 package clinicaveterinaria;
 
+import clinicaveterinaria.interfaces.Nadador;
 import clinicaveterinaria.model.*;
 import clinicaveterinaria.repository.*;
 import clinicaveterinaria.service.*;
@@ -17,6 +18,7 @@ public class Main {
         FacturacionService facturacionService = new FacturacionService(baseDatos);
         TratamientoService tratamientoService = new TratamientoService(baseDatos);
         ReporteService reporteService = new ReporteService(baseDatos);
+        
 
         Mascota mascota = new Mascota(1, "Luna", TipoAnimal.PERRO, 4, "Ana Perez");
         Veterinario veterinario = new Veterinario(1, "Dr. Ruiz", "Medicina general", true);
@@ -42,18 +44,17 @@ public class Main {
         System.out.println("Ingresos del mes: " + reporteService.calcularIngresosMensual());
 
         demostrarViolacionesSinRomperEjecucion(veterinario, mascota, tratamiento);
-        new Clinica().agendarConsultaRapida(mascota, veterinario);
+        new Clinica(reservaService, baseDatos).agendarConsultaRapida(mascota, veterinario);
         new ServicioClinicaCompleto(baseDatos).calcularTratamiento(tratamiento);
     }
 
     private static void demostrarViolacionesSinRomperEjecucion(Veterinario veterinario, Mascota mascota, Tratamiento tratamiento) {
-        Cita citaDesdeModelo = reporteService.reservarCita(2, mascota, LocalDate.now().plusDays(1));
-        diagnosticoService.diagnosticar(citaDesdeModelo, "Ejemplo de SRP violado desde el modelo.");
-        System.out.println(reporteService.crearReporte(citaDesdeModelo));
-
+        Cita citaDesdeModelo = veterinario.reservarCita(2, mascota, LocalDate.now().plusDays(1));
+        veterinario.diagnosticar(citaDesdeModelo, "Ejemplo de SRP violado desde el modelo.");
+        System.out.println(veterinario.crearReporte(citaDesdeModelo));
+        
         Animal pez = new Pez(3, "Nemo");
-        pez.nadar();
-        System.out.println("El pez heredó caminar() y volar(), aunque no debe usarlos.");
+        ((Pez) pez).nadar();
         System.out.println("Tratamiento OCP violado pero funcional: " + tratamiento.obtenerIndicaciones());
     }
 }

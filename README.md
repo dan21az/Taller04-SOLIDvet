@@ -58,3 +58,17 @@ Por los cambios que se hicieron, a lo mucho cambiaria el main, ya que lo demás 
 - Integrante 4: refactorizar ISP y DIP.
 
 Lee `guia.md` para instrucciones, checklists y preguntas de discusión.
+
+Preguntas
+-Integrante 2
+¿Porque los condicionales repetidos hacen mas caro el cambio?
+
+Porque al seguir agregando mas condicionales el codigo dentro de la misma clase se va haciendo mas grande, haciendo que si queremos cambiar sea mas complejo de hacerlo.
+
+¿Que pasaria si agregariamos "Odontologia" como tratamiento?
+
+Al agregar odontologia como tratamiento ahora solo deberiamos de crear una nueva clase llamada OdontologiaTratamiento, asi evitando las modificaciones a las clases ya existentes y cumpliendo el principio de OCP.
+
+¿Cuando una interfaz ayuda a extender el sistema?
+
+Cuando se necesita que la interfaz se implemente en varias clases del mismo tipo, en este caso tuvimos que implementarlo muchas veces en las clases de los tipos de tratamiento.
