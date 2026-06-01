@@ -4,49 +4,28 @@ Proyecto Java Maven para practicar refactoring con principios SOLID en un taller
 
 El sistema funciona desde el inicio, pero contiene violaciones intencionales de SRP, OCP, LSP, ISP y DIP. La idea es que cada integrante refactorice una zona del código sin romper la ejecución.
 
-## Setup en 5 minutos
+## Integrante 3 - LSP
+
+| Criterio | Sí/No |
+| --- | --- |
+| El proyecto compila | ✓ |
+| Ningún animal implementa acciones imposibles | ✓ |
+| No hay `UnsupportedOperationException` por capacidades naturales | ✓ |
+| El código cliente usa la interfaz correcta según la acción | ✓ |
+
+Preguntas de discusión:
+
+- ¿Por qué lanzar `UnsupportedOperationException` puede ser señal de mal diseño?
+
+Porque no indica que las subclases no puede implementar todas la soperaciones que heredan su superclase, es decir, arrastran codigo que no les sirven ni pueden usar, lo cual no cumple con el principio de LSP ni el principio de ISP.
 
 
-Compilar con Maven. Salida esperada:
+- ¿Qué contrato estaba prometiendo `Animal`?
 
-```text
-=== ClinicaVeterinaria funcionando ===
-```
+Cumplía con implementar todos los tipos de movilidad que tienen los animales, aunque no aplicaba para todos.
 
-## Estructura del proyecto
 
-```text
-src/main/java/clinicaveterinaria/
-├── Main.java
-├── interfaces/
-│   ├── IAnimal.java
-│   ├── IBaseDatos.java
-│   ├── IServicioClinica.java
-│   ├── ITratamiento.java
-│   └── IVeterinarioService.java
-├── model/
-│   ├── Mascota.java
-│   ├── Veterinario.java
-│   ├── Cita.java
-│   ├── Tratamiento.java
-│   ├── Factura.java
-│   └── clases auxiliares para animales y enums
-├── repository/
-│   ├── BaseDatos.java
-│   └── DirectoBaseDatos.java
-└── service/
-    ├── ReservaService.java
-    ├── DiagnosticoService.java
-    ├── FacturacionService.java
-    ├── ReporteService.java
-    └── servicios CRUD y clases con violaciones intencionales
-```
+- ¿Cómo cambia el diseño cuando modelamos capacidades en lugar de herencia amplia?
 
-## Trabajo del taller
+En este caso se dividen las interfaces en varias más pequeñas y especializadas; y se implementan según lo que requiere cada clase, lo que implica no arrastrar codigo no necesario en algunos casos como se lo haria con una herencia amplia.
 
-- Integrante 1: refactorizar SRP.
-- Integrante 2: refactorizar OCP.
-- Integrante 3: refactorizar LSP.
-- Integrante 4: refactorizar ISP y DIP.
-
-Lee `guia.md` para instrucciones, checklists y preguntas de discusión.

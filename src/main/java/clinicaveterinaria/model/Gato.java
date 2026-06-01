@@ -1,13 +1,13 @@
 package clinicaveterinaria.model;
+import clinicaveterinaria.interfaces.*;
 
-
-public class Gato extends Animal {
+public class Gato extends Animal implements Caminador {
     public Gato(int id, String nombre) {
         super(id, nombre, TipoAnimal.GATO);
     }
 
     @Override
-    public void nadar() {
-        throw new UnsupportedOperationException("Este gato no nada.");
+    public void caminar() {
+        System.out.println(this.getNombre() + " esta caminando.");
     }
 }
