@@ -11,6 +11,7 @@ import java.time.LocalDate;
 
 public class ReservaService implements IVeterinarioService{
     private final BaseDatos baseDatos;
+    private Veterinario veterinario;
 
     public ReservaService(BaseDatos baseDatos) {
         this.baseDatos = baseDatos;
