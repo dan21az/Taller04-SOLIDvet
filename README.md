@@ -52,6 +52,7 @@ src/main/java/clinicaveterinaria/
 Lee `guia.md` para instrucciones, checklists y preguntas de discusión.
 
 Preguntas
+-Integrante 2
 ¿Porque los condicionales repetidos hacen mas caro el cambio?
 
 Porque al seguir agregando mas condicionales el codigo dentro de la misma clase se va haciendo mas grande, haciendo que si queremos cambiar sea mas complejo de hacerlo.
