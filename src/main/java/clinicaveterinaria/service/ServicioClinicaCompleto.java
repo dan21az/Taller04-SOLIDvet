@@ -90,7 +90,7 @@ public class ServicioClinicaCompleto implements IServicioClinica {
     public void crearTratamiento(Tratamiento tratamiento) {
         tratamientoService.crearTratamiento(tratamiento);
     }
-
+    
     @Override
     public double calcularTratamiento(Tratamiento tratamiento) {
         return tratamiento.calcularCostoFinal();
