@@ -1,12 +1,15 @@
 package clinicaveterinaria.service;
+import java.time.LocalDate;
+import java.util.List;
 
 import clinicaveterinaria.model.Factura;
 import clinicaveterinaria.repository.BaseDatos;
 
-import java.util.List;
 
 public class FacturaService {
     private final BaseDatos baseDatos;
+    List<Factura> facturas;
+    
 
     public FacturaService(BaseDatos baseDatos) {
         this.baseDatos = baseDatos;
@@ -45,5 +48,18 @@ public class FacturaService {
 
     public List<Factura> listarFacturas() {
         return baseDatos.getFacturas();
+    }
+        public double calcularIngresosMensual() {
+        double total = 0;
+        int mesActual = LocalDate.now().getMonthValue();
+        int anioActual = LocalDate.now().getYear();
+        for (Factura factura : facturas) {
+            if (factura.isPagada()
+                    && factura.getFecha().getMonthValue() == mesActual
+                    && factura.getFecha().getYear() == anioActual) {
+                total += factura.getMonto();
+            }
+        }
+        return total;
     }
 }

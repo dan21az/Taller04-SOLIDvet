@@ -1,17 +1,16 @@
 package clinicaveterinaria.repository;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import clinicaveterinaria.interfaces.IBaseDatos;
 import clinicaveterinaria.model.Cita;
 import clinicaveterinaria.model.Factura;
 import clinicaveterinaria.model.Mascota;
 import clinicaveterinaria.model.Tratamiento;
 import clinicaveterinaria.model.Veterinario;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 public class BaseDatos implements IBaseDatos {
@@ -54,7 +53,7 @@ public class BaseDatos implements IBaseDatos {
     public Map<String, Integer> getAuditoria() {
         return auditoria;
     }
-
+/*
     public double calcularIngresosMensual() {
         double total = 0;
         int mesActual = LocalDate.now().getMonthValue();
@@ -68,4 +67,5 @@ public class BaseDatos implements IBaseDatos {
         }
         return total;
     }
+*/
 }
