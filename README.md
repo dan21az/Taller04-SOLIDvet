@@ -45,7 +45,15 @@ src/main/java/clinicaveterinaria/
 ## Trabajo del taller
 
 - Integrante 1: refactorizar SRP.
-- Integrante 2: refactorizar OCP.
+Preguntas de discusión:
+
+•	¿Cuántas razones para cambiar tenía Veterinario antes del refactoring?
+Se tenia que cambiar, debido a que al tener muchas operaciones en veterinario, esta hacia mas difícil de comprender y poder actualizar el mismo, al separarlos ayuda al flujo y entendimiento del mismo
+•	¿Qué ganamos al separar modelo y servicios?
+Mejor flujo y un entendimiento mas amplio del código, a si mismo ver con mas facilidad los errores del mismo y ayudar a corregirlos mejor
+•	¿Qué clase debería cambiar si mañana cambia el formato del reporte?
+Por los cambios que se hicieron, a lo mucho cambiaria el main, ya que lo demás no se vería afectado
+
 - Integrante 3: refactorizar LSP.
 - Integrante 4: refactorizar ISP y DIP.
 
